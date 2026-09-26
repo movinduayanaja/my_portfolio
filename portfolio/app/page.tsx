@@ -4,6 +4,7 @@ import { skillGroups } from "@/data/skills";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 import { experience } from "@/data/experience";
+import { education } from "@/data/education";
 
 export default function Home() {
   return (
@@ -93,6 +94,27 @@ export default function Home() {
             </Link>
             .
           </p>
+        </div>
+      </section>
+{/* Education */}
+      <section id="education" className="border-t border-hairline">
+        <div className="max-w-4xl mx-auto px-6 py-16">
+          <h2 className="font-display text-2xl text-paper mb-8">Education</h2>
+          <div className="space-y-8">
+            {education.map((item) => (
+              <div key={item.degree} className="flex flex-col sm:flex-row sm:gap-8">
+                <p className="text-sm text-muted sm:w-40 shrink-0 mb-1 sm:mb-0">
+                  {item.period}
+                </p>
+                <div>
+                  <h3 className="text-paper">{item.degree}</h3>
+                  <p className="text-muted text-sm mt-1 max-w-prose">
+                    {item.institution}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
       {/* Experience */}
