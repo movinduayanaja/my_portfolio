@@ -6,7 +6,7 @@ export default function Footer() {
         <p>© {year} Movindu Ayanaja. Built with Next.js.</p>
         <div className="flex gap-5">
           <a
-            href="https://linkedin.com/in/movinduayanaja"
+            href="https://linkedin.com/in/movindu-ayanaja/"
             target="_blank"
             rel="noreferrer"
             className="hover:text-paper transition-colors"
