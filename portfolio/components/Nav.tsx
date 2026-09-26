@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,10 +14,16 @@ const links = [
 ];
 
 export default function Nav() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="border-b border-hairline sticky top-0 bg-ink/90 backdrop-blur z-50">
       <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link
+          href="/"
+          className="flex items-center gap-3 group"
+          onClick={() => setOpen(false)}
+        >
           <div className="w-9 h-9 rounded-full overflow-hidden border border-hairline shrink-0">
             <Image
               src="/my4to.jpg"
@@ -28,7 +37,9 @@ export default function Nav() {
             Movindu Ayanaja
           </span>
         </Link>
-        <nav className="flex gap-6 text-sm text-muted">
+
+        {/* Desktop nav */}
+        <nav className="hidden sm:flex gap-6 text-sm text-muted">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -39,7 +50,44 @@ export default function Nav() {
             </Link>
           ))}
         </nav>
+
+        {/* Mobile menu button */}
+        <button
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle menu"
+          aria-expanded={open}
+          className="sm:hidden w-9 h-9 flex items-center justify-center text-paper"
+        >
+          {open ? (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
       </div>
+
+      {/* Mobile menu panel */}
+      {open && (
+        <nav className="sm:hidden border-t border-hairline px-6 py-4 flex flex-col gap-4 text-sm text-muted bg-ink">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="hover:text-paper transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   );
 }
