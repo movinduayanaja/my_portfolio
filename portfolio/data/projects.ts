@@ -54,6 +54,6 @@ export const projects: Project[] = [
       "Built the delivery management feature with full CRUD operations for delivery managers, while users can view and track delivery details.",
     stack: ["MongoDB", "Express.js", "React.js", "Node.js"],
     link: "https://github.com/movinduayanaja",
-    image: "/projects/petpulse.jpg",
+    image: "/projects/petPulse.jpg",
   },
 ];
