@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
+import { experience } from "@/data/experience";
 
 export const metadata: Metadata = {
   title: "Contact — Movindu Ayanaja",

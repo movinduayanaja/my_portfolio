@@ -3,6 +3,7 @@ import Link from "next/link";
 import { skillGroups } from "@/data/skills";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
+import { experience } from "@/data/experience";
 
 export default function Home() {
   return (
@@ -94,7 +95,28 @@ export default function Home() {
           </p>
         </div>
       </section>
-
+      {/* Experience */}
+      <section id="experience" className="border-t border-hairline">
+        <div className="max-w-4xl mx-auto px-6 py-16">
+          <h2 className="font-display text-2xl text-paper mb-8">Experience</h2>
+          <div className="space-y-8">
+            {experience.map((item) => (
+              <div key={item.role} className="flex flex-col sm:flex-row sm:gap-8">
+                <p className="text-sm text-muted sm:w-40 shrink-0 mb-1 sm:mb-0">
+                  {item.period}
+                </p>
+                <div>
+                  <h3 className="text-paper">{item.role}</h3>
+                  <p className="text-teal text-sm mt-1">{item.company}</p>
+                  <p className="text-muted text-sm mt-2 max-w-prose leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* Skills */}
       <section id="skills" className="border-t border-hairline">
         <div className="max-w-4xl mx-auto px-6 py-16">
